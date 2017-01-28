@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
 
 class Header extends Component {
   render() {
     return (
-      
+      <div className="header">
+        <h2>React Weather App</h2>
+      </div>
     );
   }
 }
