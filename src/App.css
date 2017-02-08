@@ -1,15 +1,16 @@
 body {
   text-align: center;
-  background-color: #2ea3a1; }
+  background-color: #2d2d2d;
+  color: #00d8ff; }
 
 .home {
   height: 100%;
   margin: 0 auto; }
 
 .header {
-  background-color: #fc6c43;
+  background-color: #222;
   padding: 15px;
-  color: white;
+  color: #00d8ff;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -21,12 +22,3 @@ body {
     order: 0;
     flex: 0 1 auto;
     align-self: center; }
-
-.App-intro {
-  font-size: large; }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
