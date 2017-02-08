@@ -9,10 +9,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Main />
+
+        {this.props.children}
       </div>
     );
   }
 }
-
+// <Main />
 export default App;

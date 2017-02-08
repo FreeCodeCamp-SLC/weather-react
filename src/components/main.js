@@ -1,43 +1,49 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import {connect} from 'react-redux';
+import * as actions from '../actions/index'
 
-export class Main extends Component {
+class Main extends Component {
 
-  state = {
-    isLoading: true,
-    weatherInfo: {
-      city: "Murray",
-      temp: 50
-    }
-  }
+  // state = {
+  //   isLoading: true,
+  //   weatherInfo: {
+  //     city: "Murray",
+  //     temp: 50
+  //   }
+  // }
 
   componentDidMount() {
-    return axios.get('http://ipinfo.io').then(ipResponse => {
-      console.log(ipResponse.data.postal)
-      return axios.get('http://api.openweathermap.org/data/2.5/weather?zip=' + ipResponse.data.postal + '&units=imperial&APPID=a62cd1cab307b87f29523ee6112488f5').then(weatherResponse => {
-        console.log(weatherResponse)
-        this.setState({
-          isLoading: false,
-          weatherInfo: weatherResponse.data
-        })
-      })
-    })
+    this.props.getWeather()
   }
 
   render() {
     return (
       <div className="main">
-        {(!this.state.isLoading) ?
+        {(!this.props.data.isLoading) ?
           <div>
-            <h2>{this.state.weatherInfo.name}</h2>
-            <h1>{this.state.weatherInfo.main.temp}</h1>
-            <img alt='weather-icon' src={'http://openweathermap.org/img/w/' + this.state.weatherInfo.weather[0].icon + '.png'} />
+            <h2>{this.props.data.weatherInfo.name}</h2>
+            <h1>{(this.props.data.weatherInfo.main.temp) ? this.props.data.weatherInfo.main.temp : 50}</h1>
+            <img alt='weather-icon' src={'http://openweathermap.org/img/w/' + this.props.data.weatherInfo.weather[0].icon + '.png'} />
           </div>
            : <h1>Loading</h1>}
-
       </div>
     )
   }
 }
 
-export default Main;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getWeather: () => {
+      return dispatch(actions.getWeather())
+    }
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    data: state
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

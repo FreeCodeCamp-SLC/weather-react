@@ -1,7 +1,10 @@
 body {
   text-align: center;
   background-color: #2d2d2d;
-  color: #00d8ff; }
+  color: #00d8ff;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif; }
 
 .home {
   height: 100%;
