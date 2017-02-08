@@ -26,7 +26,7 @@ export class Main extends Component {
 
   render() {
     return (
-      <div className="home">
+      <div className="main">
         {(!this.state.isLoading) ?
           <div>
             <h2>{this.state.weatherInfo.name}</h2>
